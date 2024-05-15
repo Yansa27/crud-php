@@ -8,7 +8,10 @@
    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
    $result = $db->query($sql);
    if($result->num_rows > 0) {
-    echo"datanya ada";
+    $data = $result->fetch_assoc();
+    header("location: dashboard.php");
+   }else {
+    echo "Akun tidak di temukan";
    }
  }
 ?>

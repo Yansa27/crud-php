@@ -1,6 +1,6 @@
 <?php 
  include "service/database.php";
-
+ $register_meesage = "";
  if(isset($_POST["register"])){
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -8,10 +8,10 @@
     $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
 
     if ($db->query($sql)) {
-        echo "Oke";
+        $register_meesage = "Daftar Akun Berhasil Silahkan Login";
 
     }else {
-        echo "rusak";
+        $register_meesage = "Daftar Akun Gagal";
     }
 
  }
@@ -30,6 +30,7 @@
     <?php include "layout/header.html" ?>
     <hr>
     <h3>DAFTAR AKUN</h3>
+    <i><?= $register_meesage ?></i>
     <form action="register.php" method="POST">
         <input type="text" placeholder="username" name="username">
         <input type="password" placeholder="password" name="password">
